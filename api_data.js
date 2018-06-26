@@ -101,10 +101,52 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "parcel.weight",
+            "description": "<p>Parcel's weight.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "parcel.width",
+            "description": "<p>Parcel's width.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "parcel.length",
+            "description": "<p>Parcel's length.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "parcel.height",
+            "description": "<p>Parcel's height.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "parcel.shopCode",
+            "description": "<p>Sender shop code.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "parcel.recipientShopCode",
+            "description": "<p>Recipient shop code.</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Object",
             "optional": false,
             "field": "parcel.sender",
-            "description": "<p>Information of sender.</p>"
+            "description": "<p>Information of sender. <code>Required</code></p>"
           },
           {
             "group": "Parameter",
@@ -132,7 +174,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "parcel.sender.address",
-            "description": "<p>Sender address.</p>"
+            "description": "<p>Sender address. <code>Required</code></p>"
           },
           {
             "group": "Parameter",
@@ -167,7 +209,7 @@ define({ "api": [
             "type": "Object",
             "optional": false,
             "field": "parcel.recipient",
-            "description": "<p>Information of recipient.</p>"
+            "description": "<p>Information of recipient. <code>Required</code></p>"
           },
           {
             "group": "Parameter",
@@ -188,7 +230,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "parcel.recipient.address",
-            "description": "<p>Recipient address.</p>"
+            "description": "<p>Recipient address. <code>Required</code></p>"
           },
           {
             "group": "Parameter",
@@ -245,7 +287,8 @@ define({ "api": [
             "optional": false,
             "field": "parcel.note",
             "description": "<p>Note.</p>"
-          }
+          },         
+          
         ]
       },
       "examples": [
@@ -257,6 +300,42 @@ define({ "api": [
         {
           "title": "Request-Example-with-Parcel-Group:",
           "content": "    {\n      \"parcels\": [\n       {\n       \"consignment\": \"1ABCDE48\",\n          \"parcelGroupId\": \"A2000001\",\n          \"type\": \"PD\",\n          \"shopId\": 1,\n          \"sender\": {\n          \t\t \"company\": \"Sendit Thailand.\",\n          \t\t \"phone\": \"0812345678\",\n          \t\t \"address\": \"11/2 แขวงสีลมเขต บางรัก กทม 10500\",\n              \"city\": \"กทม\",\n          \t\t \"postcode\": \"10500\"\n           },\n           \"recipient\": {\n               \"name\": \"อรม ดี\",\n               \"phone\": \"0812345678\",\n               \"address\": \"11/2 หมู่ 3 ตำบลนาแก อำเภอนาแก นครพนม 48130 ประเทศไทย\",\n\t              \"city\": \"นครพนม\",\n\t              \"postcode\": \"48130\"\n          }\n        },\n       {\n       \"consignment\": \"1ABCDE49\",\n          \"parcelGroupId\": \"A2000001\",\n          \"type\": \"PD\",\n          \"shopId\": 1,\n          \"sender\": {\n          \t\t \"company\": \"Sendit Thailand.\",\n          \t\t \"phone\": \"0812345678\",\n          \t\t \"address\": \"11/2 แขวงสีลมเขต บางรัก กทม 10500\",\n              \"city\": \"กทม\",\n          \t\t \"postcode\": \"10500\"\n           },\n           \"recipient\": {\n               \"name\": \"อรม ดี\",\n               \"phone\": \"0812345678\",\n               \"address\": \"11/2 หมู่ 3 ตำบลนาแก อำเภอนาแก นครพนม 48130 ประเทศไทย\",\n\t              \"city\": \"นครพนม\",\n\t              \"postcode\": \"48130\"\n          }\n        }\n\t\t   ]\n    }",
+          "type": "json"
+        },
+        {
+          "title": "Request-Example-with-shopCode:",
+          "content": `{
+  "parcels": [
+    {
+      "consignment": "1ABCDE48",
+      "parcelGroup": "A2000001",
+      "ref1": "",    
+      "ref2": "",
+      "ref3": "",
+      "weight": 2,
+      "width": 2,
+      "length": 2,
+      "height": 4,
+      "note": "",
+      "shopCode": "237189",
+      "recipientShopCode": "302819",
+      "sender": {
+        "company": "Sendit Thailand.",
+        "phone": "0812345678",
+        "address": "11/2 แขวงสีลมเขต บางรัก กทม 10500",
+        "city": "กทม",
+        "postcode": "10500"
+    },
+    "recipient": {
+      "name": "อรม ดี",
+      "phone": "0812345678",
+      "address": "11/2 หมู่ 3 ตำบลนาแก อำเภอนาแก นครพนม 48130 ประเทศไทย",
+      "city": "นครพนม",
+      "postcode": "48130"
+  }
+    }
+  ]
+}`,
           "type": "json"
         }
       ]
