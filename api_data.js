@@ -143,6 +143,13 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "parcel.prefertime",
+            "description": "<p>Prefertime</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Object",
             "optional": false,
             "field": "parcel.sender",
