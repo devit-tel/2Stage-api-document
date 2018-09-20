@@ -143,13 +143,6 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "parcel.prefertime",
-            "description": "<p>Prefertime</p>"
-          },
-          {
-            "group": "Parameter",
             "type": "Object",
             "optional": false,
             "field": "parcel.sender",
@@ -1011,6 +1004,172 @@ define({ "api": [
     },
     "filename": "app/apis/external/external-parcel.controller.js",
     "groupTitle": "Parcels"
+  },
+  {
+    "type": "post",
+    "url": "/external/v1.0/parcel/courier/:parcelId/:parcelSetId/:bagId/update",
+    "title": "Courier Update Parcel Status",
+    "version": "1.0.0",
+    "name": "UpdateParcel",
+    "group": "Parcels",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization Token <code>JWT + Token</code> .</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "File",
+            "optional": false,
+            "field": "file",
+            "description": "<p>Signature Image</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "courierTracking",
+            "description": "<p>Courier Tracking</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "statusCode",
+            "description": "<p>Courier status code. <code>Required</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "ISODatetime",
+            "optional": false,
+            "field": "dateTime",
+            "description": "<p>Delivered Datetime. <code>Required</code></p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "note",
+            "description": "<p>Delivered Note.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "deliveredLat",
+            "description": "<p>Delivered location's lattitude.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "deliveredLng",
+            "description": "<p>Delivered location's longtitude</p>"
+          },
+        ]
+      },
+    },
+    "examples": [
+      {
+        "title": "Request-Example:",
+        "content": `
+          "file": <>,
+        `,
+        "type": "json"
+      },
+      {
+        "title": "Example-Courier-Tracking:",
+        "content": `
+          "courierTracking": "ABN123455459"
+        `,
+        "type": "json"
+      },
+      {
+        "title": "Example-Status-Update:",
+        "content": `
+          "statusCode": 123,
+          "dateTime": "2018-09-20T03:44:28.352Z",
+          "note": "No one at home",
+          "deliveredLat": 11.002132,
+          "deliveredLng": 12.10332
+        `,
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "users.trackingCode",
+            "description": "<p>Item info was sent to the system status code.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "users.trackingStatus",
+            "description": "<p>Item info was sent to the system status name.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": `
+            HTTP/1.1 200 OK
+            {
+              statusCode: 200,
+              data: {
+                "message": "ok"
+              }
+          `,
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "UnprocessableEntity",
+            "description": "<p>...</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": `
+            HTTP/1.1 422
+            
+          `,
+          "type": "json"
+        }
+      ]
+    },
   },
   {
     "type": "post",
