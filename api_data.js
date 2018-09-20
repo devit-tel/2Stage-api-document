@@ -1027,52 +1027,52 @@ define({ "api": [
     },
     "parameter": {
       "fields": {
-        "Parameter": [
+        "Body (Formdata)": [
           {
-            "group": "Parameter",
+            "group": "Body (Formdata)",
             "type": "File",
             "optional": false,
             "field": "file",
             "description": "<p>Signature Image</p>"
           },
           {
-            "group": "Parameter",
+            "group": "Body (Formdata)",
             "type": "String",
             "optional": false,
             "field": "courierTracking",
             "description": "<p>Courier Tracking</p>"
           },
           {
-            "group": "Parameter",
+            "group": "Body (Formdata)",
             "type": "Float",
             "optional": false,
             "field": "statusCode",
-            "description": "<p>Courier status code. <code>Required</code></p>"
+            "description": "<p>Courier status code <code>Required</code></p>"
           },
           {
-            "group": "Parameter",
+            "group": "Body (Formdata)",
             "type": "ISODatetime",
             "optional": false,
             "field": "dateTime",
-            "description": "<p>Delivered Datetime. <code>Required</code></p>"
+            "description": "<p>Delivered Datetime <code>Required</code></p>"
           },
           {
-            "group": "Parameter",
+            "group": "Body (Formdata)",
             "type": "String",
             "optional": false,
             "field": "note",
-            "description": "<p>Delivered Note.</p>"
+            "description": "<p>Delivered Note</p>"
           },
           {
-            "group": "Parameter",
-            "type": "Float",
+            "group": "Body (Formdata)",
+            "type": "Double",
             "optional": false,
             "field": "deliveredLat",
-            "description": "<p>Delivered location's lattitude.</p>"
+            "description": "<p>Delivered location's lattitude</p>"
           },
           {
-            "group": "Parameter",
-            "type": "Float",
+            "group": "Body (Formdata)",
+            "type": "Double",
             "optional": false,
             "field": "deliveredLng",
             "description": "<p>Delivered location's longtitude</p>"
@@ -1084,25 +1084,31 @@ define({ "api": [
       {
         "title": "Request-Example:",
         "content": `
-          "file": <>,
+          {
+            "file": <File>
+          }
         `,
         "type": "json"
       },
       {
         "title": "Example-Courier-Tracking:",
         "content": `
-          "courierTracking": "ABN123455459"
+          {
+            "courierTracking": "ABN123455459"
+          }
         `,
         "type": "json"
       },
       {
         "title": "Example-Status-Update:",
         "content": `
-          "statusCode": 123,
-          "dateTime": "2018-09-20T03:44:28.352Z",
-          "note": "No one at home",
-          "deliveredLat": 11.002132,
-          "deliveredLng": 12.10332
+          {
+            "statusCode": 123,
+            "dateTime": "2018-09-20T03:44:28.352Z",
+            "note": "No one at home",
+            "deliveredLat": 11.002132,
+            "deliveredLng": 12.10332
+          }
         `,
         "type": "json"
       }
@@ -1121,15 +1127,8 @@ define({ "api": [
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "users.trackingCode",
-            "description": "<p>Item info was sent to the system status code.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "users.trackingStatus",
-            "description": "<p>Item info was sent to the system status name.</p>"
+            "field": "data.message",
+            "description": "<p>ok = update success</p>"
           }
         ]
       },
@@ -1139,10 +1138,11 @@ define({ "api": [
           "content": `
             HTTP/1.1 200 OK
             {
-              statusCode: 200,
-              data: {
-                "message": "ok"
+              "statusCode": 200,
+              "data": {
+                  "message": "ok"
               }
+            }
           `,
           "type": "json"
         }
@@ -1154,9 +1154,27 @@ define({ "api": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "UnprocessableEntity",
-            "description": "<p>...</p>"
-          }
+            "field": "statusCode",
+            "description": "<p>Status Code</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "errorCode",
+            "description": "<p>Error Code</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Error Message</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "messageCode",
+            "description": "<p>Error Message Code</p>"
+          },
         ]
       },
       "examples": [
@@ -1164,7 +1182,12 @@ define({ "api": [
           "title": "Error-Response:",
           "content": `
             HTTP/1.1 422
-            
+            {
+              "statusCode": 400,
+              "errorCode": "SB-023",
+              "message": "Datetime is not today",
+              "messageCode": "error.SB-023"
+            }
           `,
           "type": "json"
         }
