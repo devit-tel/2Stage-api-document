@@ -1011,7 +1011,7 @@ define({ "api": [
     "title": "Courier Update Parcel Status",
     "version": "1.0.0",
     "name": "UpdateParcel",
-    "group": "Parcels",
+    "group": "Courier",
     "header": {
       "fields": {
         "Header": [
@@ -1193,6 +1193,8 @@ define({ "api": [
         }
       ]
     },
+    "filename": "app/apis/external/external-parcel.controller.js",
+    "groupTitle": "Courier"
   },
   {
     "type": "post",
