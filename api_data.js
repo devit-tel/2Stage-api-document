@@ -1007,7 +1007,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/external/v1.0/parcel/courier/:parcelId/:parcelSetId/:bagId/update",
+    "url": "/external/v1.0/parcel/courier/:consignment/update",
     "title": "Courier Update Parcel Status",
     "version": "1.0.0",
     "name": "UpdateParcel",
