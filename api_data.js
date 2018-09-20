@@ -1028,20 +1028,20 @@ define({ "api": [
     "parameter": {
       "fields": {
         "Body (Formdata)": [
-          {
-            "group": "Body (Formdata)",
-            "type": "File",
-            "optional": false,
-            "field": "file",
-            "description": "<p>Signature Image</p>"
-          },
-          {
-            "group": "Body (Formdata)",
-            "type": "String",
-            "optional": false,
-            "field": "courierTracking",
-            "description": "<p>Courier Tracking</p>"
-          },
+          // {
+          //   "group": "Body (Formdata)",
+          //   "type": "File",
+          //   "optional": false,
+          //   "field": "file",
+          //   "description": "<p>Signature Image</p>"
+          // },
+          // {
+          //   "group": "Body (Formdata)",
+          //   "type": "String",
+          //   "optional": false,
+          //   "field": "courierTracking",
+          //   "description": "<p>Courier Tracking</p>"
+          // },
           {
             "group": "Body (Formdata)",
             "type": "Float",
@@ -1081,29 +1081,29 @@ define({ "api": [
       },
     },
     "examples": [
-      {
-        "title": "Request-Example:",
-        "content": `
-          {
-            "file": <File>
-          }
-        `,
-        "type": "json"
-      },
-      {
-        "title": "Example-Courier-Tracking:",
-        "content": `
-          {
-            "courierTracking": "ABN123455459"
-          }
-        `,
-        "type": "json"
-      },
+      // {
+      //   "title": "Request-Example:",
+      //   "content": `
+      //     {
+      //       "file": <File>
+      //     }
+      //   `,
+      //   "type": "json"
+      // },
+      // {
+      //   "title": "Example-Courier-Tracking:",
+      //   "content": `
+      //     {
+      //       "courierTracking": "ABN123455459"
+      //     }
+      //   `,
+      //   "type": "json"
+      // },
       {
         "title": "Example-Status-Update:",
         "content": `
           {
-            "statusCode": 123,
+            "statusCode": 302,
             "dateTime": "2018-09-20T03:44:28.352Z",
             "note": "No one at home",
             "deliveredLat": 11.002132,
