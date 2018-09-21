@@ -1248,7 +1248,7 @@ define({ "api": [
       //   "type": "json"
       // },
       {
-        "title": "Example-Status-Update:",
+        "title": "Example:",
         "content": `
           {
             "statusCode": 302,
