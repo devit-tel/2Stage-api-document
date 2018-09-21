@@ -1148,7 +1148,7 @@ define({ "api": [
   },
   { // COURIER
     "type": "post",
-    "url": "/external/v1.0/parcel/courier/:parcelId/update",
+    "url": "/external/v1.0/parcel/courier/:consignment/update",
     "title": "Update Parcel Status",
     "version": "1.0.0",
     "name": "UpdateParcel",
@@ -1346,7 +1346,7 @@ define({ "api": [
   },
   { // COURIER
     "type": "post",
-    "url": "/external/v1.0/parcel/courier/:parcelId/logging",
+    "url": "/external/v1.0/parcel/courier/:consignment/logging",
     "title": "Logging",
     "version": "1.0.0",
     "name": "LogingParcel",
