@@ -1007,197 +1007,6 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/external/v1.0/parcel/courier/:parcelId/update",
-    "title": "Courier Update Parcel Status",
-    "version": "1.0.0",
-    "name": "UpdateParcel",
-    "group": "Courier",
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "type": "String",
-            "optional": false,
-            "field": "Authorization",
-            "description": "<p>Authorization Token <code>JWT + Token</code> .</p>"
-          }
-        ]
-      }
-    },
-    "parameter": {
-      "fields": {
-        "Body (Formdata)": [
-          // {
-          //   "group": "Body (Formdata)",
-          //   "type": "File",
-          //   "optional": false,
-          //   "field": "file",
-          //   "description": "<p>Signature Image</p>"
-          // },
-          // {
-          //   "group": "Body (Formdata)",
-          //   "type": "String",
-          //   "optional": false,
-          //   "field": "courierTracking",
-          //   "description": "<p>Courier Tracking</p>"
-          // },
-          {
-            "group": "Body (Formdata)",
-            "type": "Float",
-            "optional": false,
-            "field": "statusCode",
-            "description": "<p>Courier status code <code>Required</code></p>"
-          },
-          {
-            "group": "Body (Formdata)",
-            "type": "ISODatetime",
-            "optional": false,
-            "field": "dateTime",
-            "description": "<p>Delivered Datetime <code>Required</code></p>"
-          },
-          {
-            "group": "Body (Formdata)",
-            "type": "String",
-            "optional": false,
-            "field": "note",
-            "description": "<p>Delivered Note</p>"
-          },
-          {
-            "group": "Body (Formdata)",
-            "type": "Double",
-            "optional": false,
-            "field": "deliveredLat",
-            "description": "<p>Delivered location's lattitude</p>"
-          },
-          {
-            "group": "Body (Formdata)",
-            "type": "Double",
-            "optional": false,
-            "field": "deliveredLng",
-            "description": "<p>Delivered location's longtitude</p>"
-          },
-        ]
-      },
-    },
-    "examples": [
-      // {
-      //   "title": "Request-Example:",
-      //   "content": `
-      //     {
-      //       "file": <File>
-      //     }
-      //   `,
-      //   "type": "json"
-      // },
-      // {
-      //   "title": "Example-Courier-Tracking:",
-      //   "content": `
-      //     {
-      //       "courierTracking": "ABN123455459"
-      //     }
-      //   `,
-      //   "type": "json"
-      // },
-      {
-        "title": "Example-Status-Update:",
-        "content": `
-          {
-            "statusCode": 302,
-            "dateTime": "2018-09-20T03:44:28.352Z",
-            "note": "No one at home",
-            "deliveredLat": 11.002132,
-            "deliveredLng": 12.10332
-          }
-        `,
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "data",
-            "description": ""
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "data.message",
-            "description": "<p>ok = update success</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": `
-            HTTP/1.1 200 OK
-            {
-              "statusCode": 200,
-              "data": {
-                  "message": "ok"
-              }
-            }
-          `,
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "statusCode",
-            "description": "<p>Status Code</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "errorCode",
-            "description": "<p>Error Code</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "message",
-            "description": "<p>Error Message</p>"
-          },
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "messageCode",
-            "description": "<p>Error Message Code</p>"
-          },
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": `
-            HTTP/1.1 422
-            {
-              "statusCode": 400,
-              "errorCode": "SB-023",
-              "message": "Datetime is not today",
-              "messageCode": "error.SB-023"
-            }
-          `,
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "app/apis/external/external-parcel.controller.js",
-    "groupTitle": "Courier"
-  },
-  {
-    "type": "post",
     "url": "/customer/v1.0/shops",
     "title": "Create a new shop",
     "version": "1.0.0",
@@ -1336,5 +1145,298 @@ define({ "api": [
     },
     "filename": "app/apis/customer/customer.controller.js",
     "groupTitle": "Shops"
+  },
+  { // COURIER
+    "type": "post",
+    "url": "/external/v1.0/parcel/courier/:parcelId/update",
+    "title": "Update Parcel Status",
+    "version": "1.0.0",
+    "name": "UpdateParcel",
+    "group": "Courier",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Content-Type=application/json Default value: <code>application/json</code>.</p>" 
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization Token <code>API KEY</code> .</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Body": [
+          // {
+          //   "group": "Body (Formdata)",
+          //   "type": "File",
+          //   "optional": false,
+          //   "field": "file",
+          //   "description": "<p>Signature Image</p>"
+          // },
+          // {
+          //   "group": "Body (Formdata)",
+          //   "type": "String",
+          //   "optional": false,
+          //   "field": "courierTracking",
+          //   "description": "<p>Courier Tracking</p>"
+          // },
+          {
+            "group": "Body",
+            "type": "Float",
+            "optional": false,
+            "field": "statusCode",
+            "description": "<p>Courier status code <code>Required</code></p>"
+          },
+          {
+            "group": "Body",
+            "type": "ISODatetime",
+            "optional": false,
+            "field": "dateTime",
+            "description": "<p>Delivered Datetime <code>Required</code></p>"
+          },
+          {
+            "group": "Body",
+            "type": "String",
+            "optional": false,
+            "field": "note",
+            "description": "<p>Delivered Note</p>"
+          },
+          {
+            "group": "Body",
+            "type": "Double",
+            "optional": false,
+            "field": "deliveredLat",
+            "description": "<p>Delivered location's lattitude</p>"
+          },
+          {
+            "group": "Body",
+            "type": "Double",
+            "optional": false,
+            "field": "deliveredLng",
+            "description": "<p>Delivered location's longtitude</p>"
+          },
+        ]
+      },
+    },
+    "examples": [
+      // {
+      //   "title": "Request-Example:",
+      //   "content": `
+      //     {
+      //       "file": <File>
+      //     }
+      //   `,
+      //   "type": "json"
+      // },
+      // {
+      //   "title": "Example-Courier-Tracking:",
+      //   "content": `
+      //     {
+      //       "courierTracking": "ABN123455459"
+      //     }
+      //   `,
+      //   "type": "json"
+      // },
+      {
+        "title": "Example-Status-Update:",
+        "content": `
+          {
+            "statusCode": 302,
+            "dateTime": "2018-09-20T03:44:28.352Z",
+            "note": "No one at home",
+            "deliveredLat": 11.002132,
+            "deliveredLng": 12.10332
+          }
+        `,
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.message",
+            "description": "<p>ok = update success</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": `
+            HTTP/1.1 200 OK
+            {
+              "statusCode": 200,
+              "data": {
+                  "message": "ok"
+              }
+            }
+          `,
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "statusCode",
+            "description": "<p>Status Code</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "errorCode",
+            "description": "<p>Error Code</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Error Message</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "messageCode",
+            "description": "<p>Error Message Code</p>"
+          },
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": `
+            HTTP/1.1 422
+            {
+              "statusCode": 400,
+              "errorCode": "SB-023",
+              "message": "Datetime is not today",
+              "messageCode": "error.SB-023"
+            }
+          `,
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/apis/external/external-parcel.controller.js",
+    "groupTitle": "Courier"
+  },
+  { // COURIER
+    "type": "post",
+    "url": "/external/v1.0/parcel/courier/:parcelId/logging",
+    "title": "Logging",
+    "version": "1.0.0",
+    "name": "LogingParcel",
+    "group": "Courier",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Content-Type=application/json Default value: <code>application/json</code>.</p>" 
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Authorization Token <code>API KEY</code> .</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Body": [
+          {
+            "group": "Body",
+            "type": "<code>Any</code>",
+            "optional": false,
+            "field": "<code>Any</code>",
+            "description": "<p>Can be any fields</p>"
+          }
+        ]
+      },
+    },
+    "examples": [
+      {
+        "title": "Example:",
+        "content": `
+          {
+            "TransId": 213,
+            "AccountId": "SENDITTH",
+            "ExternDocId": "ORD",
+            "Status": "WMS_ACCEPT",
+            "ExternDocId": "ORD",
+            "PlantId": 3101,
+            "CompletedDate": "20150303100300"
+          }
+        `,
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "data.message",
+            "description": "<p>ok = update success</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": `
+            HTTP/1.1 200 OK
+            {
+              "statusCode": 200,
+              "data": {
+                  "message": "ok"
+              }
+            }
+          `,
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/apis/external/external-parcel.controller.js",
+    "groupTitle": "Courier"
   }
 ] });
