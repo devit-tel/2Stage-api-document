@@ -1,6 +1,6 @@
 {
   "title": "Sendit-2Stage-API",
-  "url": "https://staging.api.sendit.asia/th/2stage",
+  "url": "https://api.staging.sendit.asia/th/2stage",
   "name": "Sendit-API",
   "version": "1.0.0",
   "description": "Sendit-2-Stage API",
