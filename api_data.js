@@ -1379,7 +1379,9 @@ define({ "api": [
             "type": "<code>Any</code>",
             "optional": false,
             "field": "<code>Any</code>",
-            "description": "<p>Can be any fields</p>"
+            "description": "<p>Can be any fields</p>",
+            "reason": "String",
+            "reasonCode": "String"
           }
         ]
       },
