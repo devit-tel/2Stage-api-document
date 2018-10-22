@@ -1192,10 +1192,10 @@ define({ "api": [
           // },
           {
             "group": "Body",
-            "type": "Float",
+            "type": "String",
             "optional": false,
             "field": "statusCode",
-            "description": "<p>Courier status code <code>Required</code></p>"
+            "description": "<p>Courier status code <code>Required</code> For LFLogistic please see statusCode in Tab 'LFLogictic StatusCode List above' </p>"
           },
           {
             "group": "Body",
@@ -1224,7 +1224,7 @@ define({ "api": [
             "optional": false,
             "field": "deliveredLng",
             "description": "<p>Delivered location's longtitude</p>"
-          },
+          }
         ]
       },
     },
@@ -1251,12 +1251,566 @@ define({ "api": [
         "title": "Example:",
         "content": `
           {
-            "statusCode": 302,
+            "statusCode": "AHNS",
             "dateTime": "2018-09-20T03:44:28.352Z",
             "note": "No one at home",
             "deliveredLat": 11.002132,
             "deliveredLng": 12.10332
           }
+        `,
+        "type": "json"
+      },
+      {
+        "title": "LFLogictic StatusCode List:",
+        "content": `
+          [
+            {
+              "statusCode" : "A7",
+              "statusName" : "A7",
+              "description" : "ลูกค้าปฏิเสธ(Reject)",
+              "language" : "TH",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "A7A01",
+              "statusName" : "A7A01",
+              "description" : "จำนวนสินค้าไม่ครบ(Shortage)",
+              "language" : "TH",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A01",
+              "statusName" : "A7A01",
+              "description" : "Found shortage from parcels",
+              "language" : "EN",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A02",
+              "statusName" : "A7A02",
+              "description" : "จำนวนสินค้าไม่ครบ",
+              "language" : "TH",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A02",
+              "statusName" : "A7A02",
+              "description" : "Wrong quantity",
+              "language" : "EN",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A03",
+              "statusName" : "A7A03",
+              "description" : "สินค้าไม่ถูกต้อง",
+              "language" : "TH",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A03",
+              "statusName" : "A7A03",
+              "description" : "Wrong Product",
+              "language" : "EN",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A04",
+              "statusName" : "A7A04",
+              "description" : "สินค้าไม่สมบูรณ์",
+              "language" : "TH",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A04",
+              "statusName" : "A7A04",
+              "description" : "Bad quality of product",
+              "language" : "EN",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A05",
+              "statusName" : "A7A05",
+              "description" : "เอกสารไม่สมบูรณ์",
+              "language" : "TH",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A05",
+              "statusName" : "A7A05",
+              "description" : "Bad quality of document",
+              "language" : "EN",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A06",
+              "statusName" : "A7A06",
+              "description" : "เหตุผลอื่นๆ",
+              "language" : "TH",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "A7A06",
+              "statusName" : "A7A06",
+              "description" : "Other reasons",
+              "language" : "EN",
+              "referenceCode" : 653
+            },
+            {
+              "statusCode" : "AF",
+              "statusName" : "NS",
+              "description" : "รับสินค้าออกจากคลังสินค้าแล้ว",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "AF",
+              "statusName" : "NS",
+              "description" : "Pickup from DC",
+              "language" : "EN",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "AFNS",
+              "statusName" : "AFNS",
+              "description" : "รับสินค้าออกจากคลังสินค้าแล้ว",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "AFNS",
+              "statusName" : "AFNS",
+              "description" : "Pickup from DC",
+              "language" : "EN",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "AH",
+              "statusName" : "AH",
+              "description" : "ขนส่งล่าช้า(Attempted Delivery)",
+              "language" : "TH",
+              "referenceCode" : 502
+            },
+            {
+              "statusCode" : "AHNS",
+              "statusName" : "AHNS",
+              "description" : "พยายามจัดส่งอีกครั้ง",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "AHNS",
+              "statusName" : "AHNS",
+              "description" : "Parcel is delivered",
+              "language" : "EN",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "AHONS",
+              "statusName" : "AHONS",
+              "description" : "เตรียมส่งคืนสินค้า เนื่องจากครบจำนวนครั้งในการพยายามส่งสินค้า",
+              "language" : "TH",
+              "referenceCode" : 652
+            },
+            {
+              "statusCode" : "AHONS",
+              "statusName" : "AHONS",
+              "description" : "Out of attempts",
+              "language" : "EN",
+              "referenceCode" : 652
+            },
+            {
+              "statusCode" : "AHS17A01",
+              "statusName" : "AHS17A01",
+              "description" : "ที่อยู่จัดส่งไม่ถูกต้อง",
+              "language" : "TH",
+              "referenceCode" : 554
+            },
+            {
+              "statusCode" : "AHS17A01",
+              "statusName" : "AHS17A01",
+              "description" : "Wrong delivery address",
+              "language" : "EN",
+              "referenceCode" : 554
+            },
+            {
+              "statusCode" : "AHS19A02",
+              "statusName" : "AHS19A02",
+              "description" : "ไม่มีผู้รับอยู่ ณ ที่จัดส่ง",
+              "language" : "TH",
+              "referenceCode" : 552
+            },
+            {
+              "statusCode" : "AHS19A02",
+              "statusName" : "AHS19A02",
+              "description" : "No one is at home",
+              "language" : "EN",
+              "referenceCode" : 552
+            },
+            {
+              "statusCode" : "AHS19A07",
+              "statusName" : "AHS19A07",
+              "description" : "ไม่มีผู้รับอยู่ ณ ที่จัดส่งและผู้รับแทนปฏิเสธสินค้า",
+              "language" : "TH",
+              "referenceCode" : 552
+            },
+            {
+              "statusCode" : "AHS19A07",
+              "statusName" : "AHS19A07",
+              "description" : "No one is at home and consignee reject to receive the parcel",
+              "language" : "EN",
+              "referenceCode" : 552
+            },
+            {
+              "statusCode" : "AI",
+              "statusName" : "AI",
+              "description" : "ลูกค้าเปลี่ยนสถานที่ส่ง(Re-Direct)",
+              "language" : "TH",
+              "referenceCode" : 553
+            },
+            {
+              "statusCode" : "ALH",
+              "statusName" : "NS",
+              "description" : "สินค้าถึงจุดกระจายสินค้า",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "ALH",
+              "statusName" : "NS",
+              "description" : "Parcel arrived to hub",
+              "language" : "EN",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "ALHNS",
+              "statusName" : "ALHNS",
+              "description" : "สินค้าถึงจุดกระจายสินค้า",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "ALHNS",
+              "statusName" : "ALHNS",
+              "description" : "Parcel arrived to hub",
+              "language" : "EN",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "D1",
+              "statusName" : "D1",
+              "description" : "ส่งแล้ว(Delivered)",
+              "language" : "TH",
+              "referenceCode" : 302
+            },
+            {
+              "statusCode" : "D1A09",
+              "statusName" : "D1A09",
+              "description" : "สินค้าได้ถูกจัดส่งแล้ว ในขณะที่สินค้ามีความเสียหาย",
+              "language" : "TH",
+              "referenceCode" : 302
+            },
+            {
+              "statusCode" : "D1A09",
+              "statusName" : "D1A09",
+              "description" : "Parcel is delivered while damaged",
+              "language" : "EN",
+              "referenceCode" : 302
+            },
+            {
+              "statusCode" : "D1AS",
+              "statusName" : "D1AS",
+              "description" : "สินค้าได้ถูกจัดส่งโดยไม่มี POD",
+              "language" : "TH",
+              "referenceCode" : 302
+            },
+            {
+              "statusCode" : "D1AS",
+              "statusName" : "D1AS",
+              "description" : "Parcel is delivered without POD",
+              "language" : "EN",
+              "referenceCode" : 302
+            },
+            {
+              "statusCode" : "D1NS",
+              "statusName" : "D1NS",
+              "description" : "สินค้าได้ถูกจัดส่งเรียบร้อย",
+              "language" : "TH",
+              "referenceCode" : 302
+            },
+            {
+              "statusCode" : "D1NS",
+              "statusName" : "D1NS",
+              "description" : "Parcel is delivered",
+              "language" : "EN",
+              "referenceCode" : 302
+            },
+            {
+              "statusCode" : "PD",
+              "statusName" : "PD",
+              "description" : "ส่งบางส่วน(Partial Delivery)",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "RAFRA01",
+              "statusName" : "RAFRA01",
+              "description" : "กำลังส่งคืนสินค้า เนื่องจากจำนวนสินค้าไม่ครบ",
+              "language" : "TH",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA01",
+              "statusName" : "RAFRA01",
+              "description" : "Returning the parcel because found shortage from parcels",
+              "language" : "EN",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA02",
+              "statusName" : "RAFRA02",
+              "description" : "กำลังส่งคืนสินค้า เนื่องจากจำนวนสินค้าไม่ถูกต้อง",
+              "language" : "TH",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA02",
+              "statusName" : "RAFRA02",
+              "description" : "Returning the parcel because wrong quantity",
+              "language" : "EN",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA03",
+              "statusName" : "RAFRA03",
+              "description" : "กำลังส่งคืนสินค้า เนื่องจากตัวสินค้าไม่ถูกต้อง",
+              "language" : "TH",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA03",
+              "statusName" : "RAFRA03",
+              "description" : "Returning the parcel because wrong product",
+              "language" : "EN",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA04",
+              "statusName" : "RAFRA04",
+              "description" : "กำลังส่งคืนสินค้า เนื่องจากสินค้าไม่สมบูรณ์",
+              "language" : "TH",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA04",
+              "statusName" : "RAFRA04",
+              "description" : "Returning the parcel because bad quality of product",
+              "language" : "EN",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA05",
+              "statusName" : "RAFRA05",
+              "description" : "กำลังส่งคืนสินค้า เนื่องจากเอกสารไม่สมบูรณ์",
+              "language" : "TH",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA05",
+              "statusName" : "RAFRA05",
+              "description" : "Returning the parcel because bad quality of document",
+              "language" : "EN",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA06",
+              "statusName" : "RAFRA06",
+              "description" : "กำลังส่งคืนสินค้า เนื่องจากเหตุผลอื่นๆ",
+              "language" : "TH",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA06",
+              "statusName" : "RAFRA06",
+              "description" : "Returning the parcel because other reasons",
+              "language" : "EN",
+              "referenceCode" : 703
+            },
+            {
+              "statusCode" : "RAFRA07",
+              "statusName" : "RAFRA07",
+              "description" : "กำลังส่งคืนสินค้า เนื่องจากครบจำนวนครั้งที่ต้องทำการส่ง",
+              "language" : "TH",
+              "referenceCode" : 708
+            },
+            {
+              "statusCode" : "RAFRA07",
+              "statusName" : "RAFRA07",
+              "description" : "Returning the parcel because out of attempts",
+              "language" : "EN",
+              "referenceCode" : 708
+            },
+            {
+              "statusCode" : "RD1A01",
+              "statusName" : "RD1A01",
+              "description" : "ส่งสินค้าคืนสำเร็จ เนื่องจากจำนวนสินค้าไม่ครบ",
+              "language" : "TH",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A01",
+              "statusName" : "RD1A01",
+              "description" : "Returned the parcel because found shortage from parcels",
+              "language" : "EN",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A02",
+              "statusName" : "RD1A02",
+              "description" : "ส่งสินค้าคืนสำเร็จ เนื่องจากจำนวนสินค้าไม่ถูกต้อง",
+              "language" : "TH",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A02",
+              "statusName" : "RD1A02",
+              "description" : "Returned the parcel because wrong quantity",
+              "language" : "EN",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A03",
+              "statusName" : "RD1A03",
+              "description" : "ส่งสินค้าคืนสำเร็จ เนื่องจากตัวสินค้าไม่ถูกต้อง",
+              "language" : "TH",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A03",
+              "statusName" : "RD1A03",
+              "description" : "Returned the parcel because wrong product",
+              "language" : "EN",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A04",
+              "statusName" : "RD1A04",
+              "description" : "ส่งสินค้าคืนสำเร็จ เนื่องจากสินค้าไม่สมบูรณ์",
+              "language" : "TH",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A04",
+              "statusName" : "RD1A04",
+              "description" : "Returned the parcel because bad quality of product",
+              "language" : "EN",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A05",
+              "statusName" : "RD1A05",
+              "description" : "ส่งสินค้าคืนสำเร็จ เนื่องจากเอกสารไม่สมบูรณ์",
+              "language" : "TH",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A05",
+              "statusName" : "RD1A05",
+              "description" : "Returned the parcel because bad quality of document",
+              "language" : "EN",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A06",
+              "statusName" : "RD1A06",
+              "description" : "ส่งสินค้าคืนสำเร็จ เนื่องจากเหตุผลอื่นๆ",
+              "language" : "TH",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A06",
+              "statusName" : "RD1A06",
+              "description" : "Returned the parcel because other reasons",
+              "language" : "EN",
+              "referenceCode" : 803
+            },
+            {
+              "statusCode" : "RD1A07",
+              "statusName" : "RD1A07",
+              "description" : "ส่งสินค้าคืนสำเร็จ เนื่องจากครบจำนวนครั้งที่ต้องทำการส่ง",
+              "language" : "TH",
+              "referenceCode" : 808
+            },
+            {
+              "statusCode" : "RD1A07",
+              "statusName" : "RD1A07",
+              "description" : "Returned the parcel because out of attempts",
+              "language" : "EN",
+              "referenceCode" : 808
+            },
+            {
+              "statusCode" : "SHDNS",
+              "statusName" : "SHDNS",
+              "description" : "จัดส่งอีกครั้งในวันถัดไป",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "SHDNS",
+              "statusName" : "SHDNS",
+              "description" : "Reschedule delivery",
+              "language" : "EN",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "X1",
+              "statusName" : "X1",
+              "description" : "ถึงลูกค้า(Arrived at Delivery Loc)",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "X1NS",
+              "statusName" : "X1NS",
+              "description" : "ถึงสถานที่ส่งปลายทาง เตรียมนำส่งผู้รับ",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "X1NS",
+              "statusName" : "X1NS",
+              "description" : "Arrive to the destination",
+              "language" : "EN",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "X4",
+              "statusName" : "X4",
+              "description" : "ถึงศูนย์ซัพ(Arrived at non-LF Hub)",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "Z1",
+              "statusName" : "Z1",
+              "description" : "ถึงคลังLF(Arrived at LF DC)",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "Z1NS",
+              "statusName" : "Z1NS",
+              "description" : "สินค้าถูกส่งไปยัง คลังสินค้าและพร้อมทำการส่ง",
+              "language" : "TH",
+              "referenceCode" : 202
+            },
+            {
+              "statusCode" : "Z1NS",
+              "statusName" : "Z1NS",
+              "description" : "Parcel is sent to hub and ready to send",
+              "language" : "EN",
+              "referenceCode" : 202
+            }
+          ]
         `,
         "type": "json"
       }
@@ -1379,9 +1933,7 @@ define({ "api": [
             "type": "<code>Any</code>",
             "optional": false,
             "field": "<code>Any</code>",
-            "description": "<p>Can be any fields</p>",
-            "reason": "String",
-            "reasonCode": "String"
+            "description": "<p>Can be any fields</p>"
           }
         ]
       },
@@ -1397,7 +1949,9 @@ define({ "api": [
             "Status": "WMS_ACCEPT",
             "ExternDocId": "ORD",
             "PlantId": 3101,
-            "CompletedDate": "20150303100300"
+            "CompletedDate": "20150303100300",
+            "reason": "String",
+            "reasonCode": "String"
           }
         `,
         "type": "json"
