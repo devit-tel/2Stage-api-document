@@ -1261,7 +1261,7 @@ define({ "api": [
         "type": "json"
       },
       {
-        "title": "LFLogictic StatusCode List:",
+        "title": "Example StatusCode:",
         "content": `
           [
             {
