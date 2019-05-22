@@ -292,6 +292,13 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
+            "field": "parcel.ref4",
+            "description": "<p>Product references.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
             "field": "parcel.note",
             "description": "<p>Note.</p>"
           },         
@@ -301,7 +308,38 @@ define({ "api": [
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "    {\n      \"parcels\": [\n       {\n       \"consignment\": \"1ABCDE48\",\n          \"type\": \"PD\",\n          \"shopId\": 1,\n          \"sender\": {\n          \t\t \"company\": \"Sendit Thailand.\",\n          \t\t \"phone\": \"0812345678\",\n          \t\t \"address\": \"11/2 แขวงสีลมเขต บางรัก กทม 10500\",\n              \"city\": \"กทม\",\n          \t\t \"postcode\": \"10500\"\n           },\n           \"recipient\": {\n               \"name\": \"อรม ดี\",\n               \"phone\": \"0812345678\",\n               \"address\": \"11/2 หมู่ 3 ตำบลนาแก อำเภอนาแก นครพนม 48130 ประเทศไทย\",\n\t              \"city\": \"นครพนม\",\n\t              \"postcode\": \"48130\"\n          }\n        }\n\t\t   ]\n    }",
+          "content": `{
+            "parcels": [
+              {
+                "brand": "All E-Services",
+                "consignment": "111002115900064",
+                "codAmount": 0,
+                "codAmount2": 0,
+                "note": "ทดสอบ15,,ถ่ายรูป",
+                "parcelSizeId": "SIZEB",
+                "sender": {
+                  "address": "75/30, Richmond Office Building (Level 12), Sukhumvit 26, Klong Tan, Klong Toei",
+                  "city": "Bangkokนี",
+                  "company": "SendIt",
+                  "name": "TRUE MONEY",
+                  "phone": "1240",
+                  "postcode": "10110"
+                },
+                "recipient": {
+                  "address": "16/23  ดุสิต กรุงเทพมหานคร 10170",
+                  "city": "กรุงเทพมหานคร",
+                  "name": "จิรวัฒน์ หงนภา",
+                  "phone": "",
+                  "postcode": "10170"
+                },
+                "ref1": "ทดสอบ15",
+                "ref2": "",
+                "ref3": "",
+                "ref4": "5b5001779ab86f00200ba262",
+                "type": "PD"
+              }
+            ]
+          }`,
           "type": "json"
         },
         {
